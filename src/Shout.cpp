@@ -22,17 +22,11 @@ NAN_MODULE_INIT(Shout::Init) {
 }
 
 std::string Shout::getString(Nan::NAN_METHOD_ARGS_TYPE& info, uint32_t i) {
-    auto str = Nan::To<v8::String>(info[i]).ToLocalChecked();
-    auto length = Nan::Utf8String(str).length();
-    char host[length + 1];
-
-    str->WriteUtf8(Nan::GetCurrentContext()->GetIsolate(), host, length);
-
-    host[length] = 0;
-
-    std::string out(host);
-
-    return out;
+    Nan::Utf8String utf8Str(Nan::To<v8::String>(info[i]).ToLocalChecked());
+    if (*utf8Str == nullptr) {
+        return "";
+    }
+    return std::string(*utf8Str, utf8Str.length());
 }
 
 Shout::Shout() {
