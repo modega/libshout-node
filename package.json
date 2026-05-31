@@ -32,5 +32,9 @@
     "shoutcast",
     "audio streaming"
   ],
+  "scripts": {
+    "build": "cmake-js rebuild --runtime=electron --runtime-version=22.3.27",
+    "install": "echo 'Skipping build, run \"npm run build\" manually after setup'"
+  },
   "name": "libshout-node"
 }
