@@ -32,8 +32,5 @@
     "shoutcast",
     "audio streaming"
   ],
-  "scripts": {
-    "install": "npx cmake-js build"
-  },
   "name": "libshout-node"
 }
